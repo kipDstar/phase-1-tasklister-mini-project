@@ -42,7 +42,7 @@ function renderTasks() {
       taskList.appendChild(li);
   });
 }
-
+// Function to edit a task
 function editTask(index) {
   const task = tasks[index];
   document.getElementById("new-task-description").value = task.description;
@@ -53,7 +53,7 @@ function editTask(index) {
   tasks.splice(index, 1);
   renderTasks();
 }
-
+// Function to get the color of the task based on its priority
 function getPriorityColor(priority) {
   switch (priority) {
       case "high": return "red";
@@ -62,7 +62,7 @@ function getPriorityColor(priority) {
       default: return "black";
   }
 }
-
+// Sort tasks by priority
 sortButton.addEventListener("click", () => {
   tasks.sort((a, b) => {
       const priorityOrder = { "high": 1, "medium": 2, "low": 3 };
@@ -71,3 +71,11 @@ sortButton.addEventListener("click", () => {
   renderTasks();
 });
 });
+// Function to edit a task
+function editTask(index) {
+  const newDescription = prompt("Edit task description:", tasks[index].description);
+  if (newDescription) {
+      tasks[index].description = newDescription; 
+      renderTasks(); 
+  }
+}
